@@ -124,6 +124,13 @@ class Lista_Simples:
     def remover_item(self, valor): #Remover Item (Valor) da lista
         if self.tamanho == 0:
             TypeError('Lista está Vazia.')
+        elif valor == 1:
+            self.inicio = self.inicio.proximo
+            self.tamanho -= 1
+            return
+        elif self.fim.valor == valor:
+            self.remover_fim_lista()
+            return
         perc = self.inicio
         if perc.valor == valor: #Se for o início
             self.inicio = self.inicio.proximo #O inicio vai começar da segunda casa
@@ -155,13 +162,15 @@ class Lista_Simples:
 
     
     def procurar_valor(self,index): #Irá percorrer a lista até o index selecionado e irá retornar o valor.
-        if index > self.tamanho or self.tamanho == 0: #Verificar se tem algo na lista
-            raise IndexError('Não existe elementos na lista')
+        if index >= self.tamanho or self.tamanho == 0: #Verificar se tem algo na lista
+            raise IndexError('Não existe index',{index},'na lista')
+        elif index == self.tamanho:
+            raise IndexError('UÉPAAAAAAAAAAAAAAAAA')
         else:
             perc = self.inicio
             for i in range(index):
                 perc = perc.proximo #Quando o valor do index for encontrado, ele irá retornar com os dados
-            return f' O valor do index é ',perc.valor
+            return print('O valor do index',{index}, 'é:',{perc.valor})
                     
     def valor_repetido(self, valor): #OK
         cont = 0
@@ -205,20 +214,27 @@ print(lista)
 lista.inserir(0,3)
 print(lista)
 lista.remover_index(1)
+print(lista)
 lista.adicionar(4)
 print(lista)
 print({lista.tamanho},' <-- Tamanho da Lista')
 print(lista.valor_repetido(1))
 print(lista)
 lista.remover_item(1)
+print(lista)
 lista.editar_item(0,2)
+print(lista)
 lista.editar_item(1,2)
+print(lista)
 lista.adicionar(5)
 print(lista)
 lista.editar_item(0,1)
 print(lista)
 lista.adicionar(3)
+lista.remover_item(2)
+print(lista)
 lista.ordenamento_sort()
 print(lista,' <-- Lista Ordenada')
-print(lista.procurar_valor(3))
+lista.procurar_valor(2)
+print({lista.tamanho},' <-- Tamanho da Lista')
 #OK
