@@ -164,8 +164,6 @@ class Lista_Simples:
     def procurar_valor(self,index): #Irá percorrer a lista até o index selecionado e irá retornar o valor.
         if index >= self.tamanho or self.tamanho == 0: #Verificar se tem algo na lista
             raise IndexError('Não existe index',{index},'na lista')
-        elif index == self.tamanho:
-            raise IndexError('UÉPAAAAAAAAAAAAAAAAA')
         else:
             perc = self.inicio
             for i in range(index):
