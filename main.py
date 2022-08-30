@@ -54,7 +54,6 @@ class Lista_Simples:
         self.tamanho += 1
             
     def inserir(self, index, valor): #Inserir elemento no index desejado com o valor
-        meio = int(self.tamanho / 2)
         if index> self.tamanho:
             raise IndexError ("Posição inválida")
         elif index == self.tamanho:
@@ -62,29 +61,18 @@ class Lista_Simples:
         elif index == 0:
             self.adicionar_inicio(valor)
         else:
-            if index <= meio: #Verificar se é index procurado é menor que a metade da lista
-                no = _No(valor)
-                perc = self.inicio
-                cont = 0
-                while cont < index - 1:
-                    perc = perc.proximo
-                    cont += 1
-                no.proximo = perc.proximo
-                perc.proximo.anterior = no
-                perc.proximo = no
-                no.anterior = perc
-            else: #Acessar a outra metade da lista
-                no = _No(valor) 
-                perc = self.fim
-                cont = self.tamanho
-                while cont > index:
-                    perc = perc.anterior
-                    cont -= 1
-                no.proximo = perc.proximo
-                perc.proximo.anterior = no
-                perc.proximo = no
-                no.anterior = perc
-            self.tamanho += 1
+            no = _No(valor)
+            perc = self.inicio
+            cont = 0
+            while cont < index - 1:
+                perc = perc.proximo
+                cont += 1
+            no.proximo = perc.proximo
+            perc.proximo.anterior = no
+            perc.proximo = no
+            no.anterior = perc
+            self.tamanho +=1
+            return
  
     def remover_inicio_lista(self): #Remover o inicio da lista
         if self.vazia():
